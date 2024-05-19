@@ -14,7 +14,7 @@ const status=[
 ]
 export default function ProductsStatus() {
   return (
-    <div className="bg-blue-600 h-60">
+   <>
       <div className="flex justify-between w-full py-10 px-5 text-white text-2xl">
         <h2>Products</h2>
         <button className="bg-white text-black p-2 rounded-lg text-lg">
@@ -29,6 +29,6 @@ export default function ProductsStatus() {
       
         
       </div>
-    </div>
+      </>
   );
 }

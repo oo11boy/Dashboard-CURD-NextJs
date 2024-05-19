@@ -4,6 +4,7 @@
 
 body {
   width: 100%;
+  background-color: #F1F5F9;
 }
 .dshcontainer {
   display: flex;
