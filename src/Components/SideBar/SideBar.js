@@ -1,14 +1,21 @@
-import React from "react";
-import ItemSideBar from "./SideBarComponents/ItemSideBar/ItemSideBar";
+// sidebar container
+"use client"
+import React, { useContext } from "react";
+import ItemsSideBar from "./SideBarComponents/ItemSideBar/ItemSideBar";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-export default function SideBar() {
+import LayersIcon from "@mui/icons-material/Layers";
+import './SideBar.css'
+import { HideViewSideBarContext } from "@/ContextApi/HideViewSideBarContext";
+export const sidebaritems = [
+  { name: "Dashboard", src: "../", icon: <DashboardIcon className="mr-2" /> },
+  { name: "Pages", src: "../", icon: <LayersIcon className="mr-2" /> },
+];
+export default function SideBar({width}) {
+
+    const {SideBarStatus}=useContext(HideViewSideBarContext)
   return (
-    <div className="sidebar flex flex-col align-middle justify-start bg-slate-950 h-lvh">
-      <div className="flex flex-row  items-center justify-start mt-2 mb-2 text-slate-50 p-3">
-        <DashboardIcon  className="mr-3  text-2xl "  />
-        <ItemSideBar name="Dashboard" src="../" />
-      </div>
-      
+    <div className={`${SideBarStatus ? 'showsidebar':'hidesidebar'} ${width} sidebar flex flex-col align-middle justify-start bg-slate-950 h-lvh`}>
+      <ItemsSideBar sidebaritems={sidebaritems} />
     </div>
   );
 }
