@@ -1,9 +1,32 @@
 .hidesidebar{
-   transform: translate(-1000px);
-   transition: all 1s ease;
+  overflow: hidden;
+  transition: all 0.5s ease;
+
+}
+.hidesidebar *{
+  transform: translate(-1000px);
+  transition: all 0.5s ease;
+}
+.showsidebar {
+  overflow: visible;
+  transition: all 0.5s ease;
+
 }
 
-.showsidebar{
-    transform: translate(0);
-    transition: all 1s ease;
+.showsidebar *{
+  transform: translate(0);
+  transition: all 0.5s ease;
+}
+
+@keyframes hidesidebar {
+  0%{transform: translate(1000px);}
+}
+.cancelicon {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .cancelicon {
+    display: flex;
+  }
 }

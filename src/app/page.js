@@ -10,7 +10,7 @@ export default function page() {
   return (
     <div className="dshcontainer">
       <SideBar width={!SideBarStatus && "wi-0"} />
-      <Content width={"wi-100"} />
+      <Content  />
     </div>
   );
 }

@@ -2,33 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   width: 100%;
 }
-.dshcontainer{
+.dshcontainer {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%!important;
+  width: 100% !important;
 }
-.dshcontainer .sidebar{
-width: 20%;
+.dshcontainer .sidebar {
+  width: 20%;
 }
-.dshcontainer .content{
-  width: 80%;
+.dshcontainer .content {
+  width: 100%;
   background-color: blue;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   body {
     background-color: lightblue;
+  }
+  .dshcontainer {
+    position: relative;
+  }
+
+  .dshcontainer .sidebar {
+    width: 90%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .dshcontainer .content {
+    width: 100%;
+    background-color: blue;
   }
 }
 
 
-.wi-100{
-  width: 100%!important;
-}
-.wi-0{
-  width: 0!important;
+.wi-0 {
+  width: 0 !important;
 }
