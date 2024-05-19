@@ -1,0 +1,13 @@
+
+
+
+@media only screen and (max-width: 1000px) {
+    .productcardsstatus{
+        display: flex;
+        flex-direction: column;
+    }
+    .productcardsstatus > div{
+        width: 90%;
+        margin:10px auto;
+    }
+}

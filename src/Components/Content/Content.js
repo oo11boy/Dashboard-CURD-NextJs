@@ -6,7 +6,10 @@ export default function Content({ width }) {
   return (
     <div className={`${width} content`}>
     <NavHeader/>
+    <div className=" overflow-auto contentscrolled">
     <ProductsStatus/>
     </div>
+    </div>
+
   );
 }

@@ -26,3 +26,11 @@
     justify-content: flex-end;
 
 }
+
+
+
+@media only screen and (max-width: 420px) {
+    .leftnavheader input{
+width: 150px;
+    }
+}
