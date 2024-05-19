@@ -16,7 +16,8 @@ body {
 }
 .dshcontainer .content {
   width: 100%;
-  background-color: blue;
+  height: 100vh;
+  overflow: auto;
 }
 
 @media only screen and (max-width: 900px) {
@@ -32,10 +33,11 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 999;
   }
   .dshcontainer .content {
     width: 100%;
-    background-color: blue;
+   background-color: white;
   }
 }
 
