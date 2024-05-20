@@ -5,8 +5,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TableListContext } from "@/ContextApi/TableListContext";
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import ProductEdit from "./ProductEdit";
 export default function TableList() {
-  const { productlist, deleteproductHandler } = useContext(TableListContext);
+  const { editProductHandler,productlist, deleteproductHandler ,setShowModalEdit,ShowModalEdit} = useContext(TableListContext);
 
   return (
     <div className="relative overflow-x-auto">
@@ -22,9 +25,7 @@ export default function TableList() {
             <th scope="col" className="px-6 py-3">
               Category
             </th>
-            <th scope="col" className="px-6 py-3">
-              Rate
-            </th>
+          
             <th scope="col" className="px-6 py-3">
               Action
             </th>
@@ -42,17 +43,21 @@ export default function TableList() {
                 </th>
                 <td className="px-6 py-4">{item.price}</td>
                 <td className="px-6 py-4">{item.category}</td>
-                <td className="px-6 py-4">{item.rating.rate}</td>
-                <td className="px-6 py-4">
-                  Edit /{" "}
-                  <DeleteIcon onClick={() => deleteproductHandler(item.id)} /> /
-                  View
+               
+                <td className="px-6 py-4 flex items-center">
+                  <EditIcon className="m-2 cursor-pointer" onClick={()=>editProductHandler(item.id)}/>
+                  <DeleteIcon className="m-2 cursor-pointer" onClick={() => deleteproductHandler(item.id)} /> 
+              
+               <VisibilityIcon className="m-2 cursor-pointer"/>
+               
                 </td>
               </tr>
             );
           })}
+       
         </tbody>
       </table>
+       {ShowModalEdit && <ProductEdit/>}  
     </div>
   );
 }

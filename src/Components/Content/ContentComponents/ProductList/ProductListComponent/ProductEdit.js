@@ -1,47 +1,129 @@
-import React from 'react'
+import React, { useContext } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import { TableListContext } from "@/ContextApi/TableListContext";
+import { Backdrop, Fade } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function ProductEdit() {
+  const handleClose = () => setShowModalEdit(false);
+  const {ProductSelected, SetEdited,Edited, editHandler, setShowModalEdit, ShowModalEdit } =
+    useContext(TableListContext);
+ 
   return (
-    <div>
-        
-<button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Toggle modal
-</button>
+   ProductSelected && <div>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={ShowModalEdit}
+        onClose={handleClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={ShowModalEdit}>
+          <Box sx={style}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+             Product Edit
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+            
+                <form class="w-full max-w-sm" onSubmit={editHandler}>
+                  <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                      <label
+                        class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                        for="inline-full-name"
+                      >
+                        Name
+                      </label>
+                    </div>
+                    <div class="md:w-2/3">
+                      <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        id="inline-full-name"
+                        type="text"
+                        onChange={(e)=>SetEdited({title:e.target.value})}
+                        value={Edited.title!==undefined ? Edited.title :ProductSelected.title}
+                      />
+                    </div>
+                  </div>
 
-<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
-    
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Terms of Service
-                </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-        
-            <div class="p-4 md:p-5 space-y-4">
-                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                </p>
-                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                </p>
-            </div>
-         
-            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
-            </div>
-        </div>
-    </div>
-</div>
+                  <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                      <label
+                        class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                        for="inline-full-name"
+                      >
+                        Price
+                      </label>
+                    </div>
+                    <div class="md:w-2/3">
+                      <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        id="inline-full-name"
+                        type="text"
+                        onChange={(e)=>SetEdited({price:e.target.value})}
+                        value={Edited.price!==undefined ? Edited.price :ProductSelected.price}
+                     />
+                    </div>
+                  </div>
+                  <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                      <label
+                        class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                        for="inline-full-name"
+                      >
+                        Category
+                      </label>
+                    </div>
+                    <div class="md:w-2/3">
+                      <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        id="inline-full-name"
+                        type="text"
+                        onChange={(e)=>SetEdited({category:e.target.value})}
+                        value={Edited.category!==undefined ? Edited.category :ProductSelected.category}
+                
+                      />
+                    </div>
+                  </div>
+              
 
+                  <div class="md:flex md:items-center">
+                    <div class="md:w-1/3"></div>
+                    <div class="md:w-2/3">
+                      <button
+                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                        type="button"
+                        onClick={(event)=>editHandler(event)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal>
     </div>
-  )
+);
 }
