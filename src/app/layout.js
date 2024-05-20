@@ -1,5 +1,6 @@
 import { HideViewSideBarContextProvider } from "@/ContextApi/HideViewSideBarContext";
 import "./globals.css";
+import { TableListContextContextProvider } from "@/ContextApi/TableListContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <HideViewSideBarContextProvider>
+        <TableListContextContextProvider>
       <body>{children}</body>
+      </TableListContextContextProvider>
       </HideViewSideBarContextProvider>
+      
     </html>
   );
 }
