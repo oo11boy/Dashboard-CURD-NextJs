@@ -2,7 +2,8 @@
 import axios from "axios";
 import { createContext, useContext } from "react";
 import { TableListContext } from "./TableListContext";
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 export const ProductDeleteContext = createContext({});
 
 export const ProductDeleteContextProvider = ({ children }) => {
@@ -29,8 +30,33 @@ export const ProductDeleteContextProvider = ({ children }) => {
     }
   };
 
+
+    
+const MySwal = withReactContent(Swal)
+
+const handleDelete = (id) => {
+  MySwal.fire({
+    title: "Are you sure?",
+    text: "This action cannot be undone!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      deleteproductHandler(id);
+      MySwal.fire(
+        "Deleted!",
+        "The product has been successfully deleted.",
+        "success"
+      );
+    }
+  });
+};
   const val = {
-    deleteproductHandler,
+    handleDelete,
   };
   return (
     <ProductDeleteContext.Provider value={val}>

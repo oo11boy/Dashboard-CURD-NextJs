@@ -10,10 +10,11 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ProductEdit from "./ProductEdit";
 import { ProductEditContext } from "@/ContextApi/ProductEditContext";
 import { ProductDeleteContext } from "@/ContextApi/ProductDeleteContext";
+
 export default function TableList() {
   const { productlist } = useContext(TableListContext);
   const { editProductHandler, ShowModalEdit } = useContext(ProductEditContext);
-  const { deleteproductHandler } = useContext(ProductDeleteContext);
+  const { handleDelete } = useContext(ProductDeleteContext);
 
   return (
     <div className="relative overflow-x-auto">
@@ -58,7 +59,7 @@ export default function TableList() {
                     />
                     <DeleteIcon
                       className="m-2 cursor-pointer"
-                      onClick={() => deleteproductHandler(item.id)}
+                      onClick={() => handleDelete(item.id)}
                     />
 
                     <VisibilityIcon className="m-2 cursor-pointer" />

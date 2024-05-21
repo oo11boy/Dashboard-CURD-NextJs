@@ -1,6 +1,6 @@
 "use client";
 import { getdataproduct } from "@/Components/Content/ContentComponents/ProductList/ProductListComponent/GetDataProduct";
-import axios from "axios";
+
 import { createContext, useEffect, useState } from "react";
 
 export const TableListContext = createContext({});

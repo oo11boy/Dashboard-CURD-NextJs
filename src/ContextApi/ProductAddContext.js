@@ -2,6 +2,7 @@
 import { createContext, useContext, useState } from "react";
 import { TableListContext } from "./TableListContext";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const ProductAddContext = createContext({});
 
@@ -22,6 +23,11 @@ export const ProductAddContextProvider = ({ children }) => {
       .then((response) => {
         console.log(response.data);
         setProductList((prevProduct) => [...prevProduct, NewProduct]);
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Product has been Added successfully!",
+        });
         setshowAddProductModal(false);
       })
       .catch((error) => {

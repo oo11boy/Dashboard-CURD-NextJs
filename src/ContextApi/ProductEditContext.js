@@ -2,6 +2,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { TableListContext } from "./TableListContext";
+import Swal from "sweetalert2";
 
 export const ProductEditContext = createContext({});
 
@@ -35,6 +36,11 @@ export const ProductEditContextProvider = ({ children }) => {
             item.id === productId ? { ...item, ...Edited } : item
           )
         );
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Product has been updated successfully!",
+          });
         seteditstatus(!editstatus);
         setShowModalEdit(false);
       })
@@ -47,6 +53,11 @@ export const ProductEditContextProvider = ({ children }) => {
           item.id === productId ? { ...item, ...Edited } : item
         )
       );
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Product has been updated successfully!",
+      });
       seteditstatus(!editstatus);
       setShowModalEdit(false);
   };
