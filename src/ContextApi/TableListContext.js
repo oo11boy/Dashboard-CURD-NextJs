@@ -34,9 +34,6 @@ export const TableListContextContextProvider = ({ children }) => {
     }
   };
 
-
-
-
   // ویرایش اظلاعات
   const [ShowModalEdit, setShowModalEdit] = useState(false);
 
@@ -76,6 +73,10 @@ export const TableListContextContextProvider = ({ children }) => {
     setShowModalEdit(true);
   };
 
+
+
+
+
   const val = {
     deleteproductHandler,
     productlist,
@@ -89,7 +90,7 @@ export const TableListContextContextProvider = ({ children }) => {
     editHandler,
     SetEdited,
     Edited,
-    ProductSelected
+    ProductSelected,
   };
   return (
     <TableListContext.Provider value={val}>

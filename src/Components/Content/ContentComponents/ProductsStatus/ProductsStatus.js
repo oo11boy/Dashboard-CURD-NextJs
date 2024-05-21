@@ -17,9 +17,7 @@ export default function ProductsStatus() {
    <>
       <div className="flex justify-between w-full py-10 px-5 text-white text-2xl">
         <h2>Products</h2>
-        <button className="bg-white text-black p-2 rounded-lg text-lg">
-          create new Product
-        </button>
+    
       </div>
 
       <div className=" translate-y-1 w-12/12 m-auto flex justify-between productcardsstatus">

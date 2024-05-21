@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ProductEdit from "./ProductEdit";
 export default function TableList() {
-  const { editProductHandler,productlist, deleteproductHandler ,setShowModalEdit,ShowModalEdit} = useContext(TableListContext);
+  const { editProductHandler,productlist, deleteproductHandler ,ShowModalEdit} = useContext(TableListContext);
 
   return (
     <div className="relative overflow-x-auto">
@@ -32,7 +32,7 @@ export default function TableList() {
           </tr>
         </thead>
         <tbody>
-          {productlist.map((item) => {
+          {productlist.slice().reverse().map((item) => {
             return (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
