@@ -18,7 +18,7 @@ export default function NavHeader() {
         <div class="relative">
           <img
             class="w-10 h-10 rounded-full"
-            src="https://dash-ui-admin-template.vercel.app/images/avatar/avatar-1.jpg"
+            src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"
             alt="img"
           />
           <span className="bottom-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>

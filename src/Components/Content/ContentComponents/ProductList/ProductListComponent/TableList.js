@@ -10,6 +10,7 @@ import ProductEdit from "./ProductEdit";
 import { PaginationItem, Stack } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Link from "next/link";
 export default function TableList() {
   const { productlist } = useContext(TableListContext);
   const { editProductHandler, ShowModalEdit } = useContext(ProductEditContext);
@@ -29,9 +30,8 @@ export default function TableList() {
   };
 
   return (
-    <div className="relative overflow-x-auto">
-       {/* نمایش پیجینیشن */}
-       <div className="flex justify-end my-4">
+    <>
+    <div className="flex justify-end my-4">
     
     <Stack spacing={2}>
   <Pagination
@@ -47,8 +47,11 @@ export default function TableList() {
   />
 </Stack>
   </div>
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <div className="relative overflow-x-auto">
+     
+   
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
           <tr>
             <th scope="col" className="px-6 py-3">
               Product name
@@ -60,7 +63,7 @@ export default function TableList() {
               Category
             </th>
 
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 flex justify-center py-3">
               Action
             </th>
           </tr>
@@ -70,10 +73,10 @@ export default function TableList() {
         
           {currentProducts.map((item) => {
             return (
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <tr className="bg-white border-b ">
                 <th
                   scope="row"
-                  className="px-6  py-4 font-medium flex items-center text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6  py-4 font-medium flex items-center text-gray-900 whitespace-nowrap "
                 >
                   <img className="w-12 border border-opacity-95 p-1 h-12 mr-2 rounded-lg" src={item.image}/>
                   {item.title}
@@ -81,7 +84,7 @@ export default function TableList() {
                 <td className="px-6 py-4">{item.price}</td>
                 <td className="px-6 py-4">{item.category}</td>
 
-                <td className="px-6 py-4 flex items-center">
+                <td className="px-6 py-4 flex justify-center items-center">
                   <EditIcon
                     className="m-2 cursor-pointer"
                     onClick={() => editProductHandler(item.id)}
@@ -90,7 +93,11 @@ export default function TableList() {
                     className="m-2 cursor-pointer"
                     onClick={() => handleDelete(item.id)}
                   />
-                  <VisibilityIcon className="m-2 cursor-pointer" />
+                  <Link href={`../${item.id}`} >
+                  <VisibilityIcon 
+                   className="m-2 cursor-pointer" />
+                  </Link>
+                  
                 </td>
               </tr>
             );
@@ -101,5 +108,6 @@ export default function TableList() {
 
     
     </div>
+    </>
   );
 }
