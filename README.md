@@ -1,3 +1,5 @@
+# Demo
+[View Demo](https://dashboard-curd-nextjs.liara.run)
 # Next.js Dashboard
 
 This project is a comprehensive dashboard built with Next.js, implementing all CRUD operations and routing functionalities. It adheres to design patterns, clean code practices, and ensures code readability. The data is fetched from APIs server-side, and the Context API is utilized for state management.
