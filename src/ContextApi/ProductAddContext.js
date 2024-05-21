@@ -13,6 +13,7 @@ export const ProductAddContextProvider = ({ children }) => {
     title: "",
     price: "",
     category: "",
+    image:""
   });
 
   const AddProductHandler = (e) => {
@@ -22,7 +23,7 @@ export const ProductAddContextProvider = ({ children }) => {
       .post(`https://fakestoreapi.com/products`, NewProduct)
       .then((response) => {
         console.log(response.data);
-        setProductList((prevProduct) => [...prevProduct, NewProduct]);
+        setProductList((prevProduct) => [NewProduct,...prevProduct]);
         Swal.fire({
           icon: "success",
           title: "Success",

@@ -20,6 +20,7 @@ export const ProductEditContextProvider = ({ children }) => {
     title: undefined,
     price: undefined,
     category: undefined,
+    image:undefined
   });
   useEffect(() => {
     const find = productlist.find((item) => item.id == productId);
