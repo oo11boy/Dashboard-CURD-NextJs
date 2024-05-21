@@ -2,6 +2,8 @@ import { HideViewSideBarContextProvider } from "@/ContextApi/HideViewSideBarCont
 import "./globals.css";
 import { TableListContextContextProvider } from "@/ContextApi/TableListContext";
 import { ProductAddContextProvider } from "@/ContextApi/ProductAddContext";
+import { ProductEditContextProvider } from "@/ContextApi/ProductEditContext";
+import { ProductDeleteContextProvider } from "@/ContextApi/ProductDeleteContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,9 +15,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <HideViewSideBarContextProvider>
         <TableListContextContextProvider>
+
+          <ProductEditContextProvider>
+            <ProductDeleteContextProvider>
           <ProductAddContextProvider>
             <body>{children}</body>
           </ProductAddContextProvider>
+          </ProductDeleteContextProvider>
+          </ProductEditContextProvider>
         </TableListContextContextProvider>
       </HideViewSideBarContextProvider>
     </html>

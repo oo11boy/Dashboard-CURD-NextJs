@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TableListContext } from "@/ContextApi/TableListContext";
 import { Backdrop, Fade } from "@mui/material";
+import { ProductEditContext } from "@/ContextApi/ProductEditContext";
 
 const style = {
   position: "absolute",
@@ -20,7 +21,7 @@ const style = {
 export default function ProductEdit() {
   const handleClose = () => setShowModalEdit(false);
   const {ProductSelected, SetEdited,Edited, editHandler, setShowModalEdit, ShowModalEdit } =
-    useContext(TableListContext);
+    useContext(ProductEditContext);
  
   return (
    ProductSelected && <div>

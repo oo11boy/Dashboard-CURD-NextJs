@@ -1,8 +1,6 @@
 import { ProductAddContext } from "@/ContextApi/ProductAddContext";
-import { TableListContext } from "@/ContextApi/TableListContext";
 import { Backdrop, Box, Fade, Modal, Typography } from "@mui/material";
-import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -15,9 +13,14 @@ const style = {
   p: 4,
 };
 export default function ProductAdd() {
+  const {
+    showAddProductModal,
+    setshowAddProductModal,
+    NewProduct,
+    SetNewProduct,
+    AddProductHandler,
+  } = useContext(ProductAddContext);
 
-  const { showAddProductModal, setshowAddProductModal, NewProduct,SetNewProduct,AddProductHandler } =useContext(ProductAddContext);
- 
   return (
     <div>
       <Modal
@@ -36,7 +39,7 @@ export default function ProductAdd() {
         <Fade in={showAddProductModal}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Product Edit
+              Product Add
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               <form class="w-full max-w-sm" onSubmit={AddProductHandler}>
